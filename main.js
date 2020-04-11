@@ -51,6 +51,8 @@ function midle(req, res, next) {
 	next();
 }
 
+app.post("/api/create", userController.createUser);
+
 app.post("/api/login", midle, (req, res, next) => {
 		console.log(req.body);
 	passport.authenticate("local", (err, user, info) => {
@@ -134,8 +136,6 @@ app.get("/test", (req, res) => {
 		success: true
 	}));
 });
-
-app.post("/api/create", userController.createUser);
 
 app.get("/logout", (req, res) => {
 	console.log("/logout")
